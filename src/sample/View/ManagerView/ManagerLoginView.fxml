@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane fx:controller="sample.Controller.WaiterLoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ManagerController.ManagerLoginController">
    <children>
       <HBox prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -21,7 +20,7 @@
                <children>
                   <ImageView fitHeight="400.0" fitWidth="300.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../img/waiter.png" />
+                        <Image url="@../../../img/employee.png" />
                      </image>
                   </ImageView>
                </children>
@@ -30,28 +29,28 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
                      <children>
-                        <Label text="Waiter Login" textFill="#fe7853">
+                        <Label text="Manager Login" textFill="#fe7853">
                            <font>
                               <Font name="Arial Black" size="24.0" />
                            </font>
                         </Label>
-                        <TextField promptText="User Name">
+                        <TextField nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="193.0" promptText="User Name">
                            <VBox.margin>
                               <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                            </VBox.margin>
                         </TextField>
                         <PasswordField promptText="Password">
                            <VBox.margin>
-                              <Insets bottom="16.0" left="16.0" right="16.0" />
+                              <Insets left="16.0" right="16.0" />
                            </VBox.margin>
                         </PasswordField>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #4aadff;" text="Login" textFill="WHITE">
+                        <Button mnemonicParsing="false" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Login" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="16.0" />
+                           </VBox.margin>
                            <font>
                               <Font size="18.0" />
                            </font>
-                           <padding>
-                              <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-                           </padding>
                         </Button>
                      </children>
                   </VBox>

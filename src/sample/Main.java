@@ -14,7 +14,11 @@ public class Main extends Application {
         primaryStage.setTitle("Resturant System");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        
+        Stage stage = new Stage();
+        Parent toor = FXMLLoader.load(getClass().getResource("View/ManagerView/ManagerHomeView.fxml"));
+        stage.setScene(new Scene(toor));
+        stage.show();
+
     }
 
 
