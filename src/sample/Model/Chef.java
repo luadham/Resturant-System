@@ -7,7 +7,6 @@ package sample.Model;
 public class Chef extends Staff {
     /**
      * Instantiates a new Chef.
-     *
      * @param name   the name
      * @param id     the id
      * @param salary the salary
@@ -16,5 +15,6 @@ public class Chef extends Staff {
         this.name = name;
         this.id = id;
         this.salary = salary;
+        this.jopRole = "Chef";
     }
 }

@@ -19,24 +19,24 @@
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <TextField promptText="Enter id">
+            <TextField fx:id="idTextField" promptText="ID">
                <VBox.margin>
                   <Insets bottom="16.0" left="64.0" right="64.0" top="16.0" />
                </VBox.margin>
             </TextField>
-            <TextField promptText="Enter Name">
+            <TextField fx:id="nameTextField" promptText="Name">
                <VBox.margin>
                   <Insets bottom="16.0" left="64.0" right="64.0" />
                </VBox.margin>
             </TextField>
-            <TextField promptText="EnterSalary">
+            <TextField fx:id="salaryTextField" promptText="Salary">
                <VBox.margin>
                   <Insets bottom="16.0" left="64.0" right="64.0" />
                </VBox.margin>
             </TextField>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0">
                <children>
-                  <RadioButton mnemonicParsing="false" text="Waiter">
+                  <RadioButton fx:id="waiterRadioButton" mnemonicParsing="false" text="Waiter">
                      <HBox.margin>
                         <Insets right="16.0" />
                      </HBox.margin>
@@ -44,17 +44,20 @@
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Chef">
+                  <RadioButton fx:id="chefRadioButton" mnemonicParsing="false" text="Chef">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: #ef912d;" text="Submit" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#saveStaffButton" style="-fx-background-color: #ef912d;" text="Submit" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="32.0" />
+               </VBox.margin>
             </Button>
          </children>
       </VBox>

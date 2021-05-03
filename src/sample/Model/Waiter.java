@@ -17,5 +17,6 @@ public class Waiter extends Staff {
         this.name = name;
         this.id = id;
         this.salary = salary;
+        this.jopRole = "Waiter";
     }
 }

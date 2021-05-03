@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import sample.Controller.InputControl;
 import sample.Model.Food;
 import sample.Model.FoodList;
 
@@ -23,37 +24,21 @@ public class ManagerFoodController {
 
     @FXML
     private void saveFoodButton() {
-        if (verifyText()) {
-            Food food = new Food(foodName.getText(), foodDescription.getText(), Double.parseDouble(foodPrice.getText()));
-            FoodList.addNewFood(food, errorLabel);
-            clearFields();
+        boolean isAddSuccessfuly = false;
+        if (InputControl.verifyTextField(foodName, foodDescription,foodPrice)
+                && InputControl.verifyDoubleNumber(foodPrice)) {
+            Food food = new Food(foodName.getText().trim(), foodDescription.getText().trim(), Double.parseDouble(foodPrice.getText()));
+            isAddSuccessfuly = FoodList.addNewFood(food);
+            InputControl.clearFields(foodName, foodDescription,foodPrice);
+        } else {
+            InputControl.setErrorMessage(errorLabel, "Please Enter Correct Data");
         }
+        if (!isAddSuccessfuly) InputControl.setErrorMessage(errorLabel, "Food Is Already Exist");
     }
 
     @FXML
     private void clearLabel() {
-        errorLabel.setText("");
-    }
-
-    private boolean verifyText() {
-        if (foodName.getText().equals("") || foodDescription.getText().equals("")
-        || foodPrice.getText().equals("")) {
-            errorLabel.setText("Please Enter Food");
-            return false;
-        }
-        try {
-            Double.parseDouble(foodPrice.getText());
-        } catch (NumberFormatException exception) {
-            errorLabel.setText("Food Price Must Be a Number");
-            return false;
-        }
-        return true;
-    }
-
-    private void clearFields() {
-        foodName.setText("");
-        foodPrice.setText("");
-        foodDescription.setText("");
+        InputControl.removeErrorMessage(errorLabel);
     }
 
 
