@@ -16,6 +16,7 @@ public class Chef extends Staff {
         this.id = id;
         this.salary = salary;
         this.jopRole = "Chef";
+        this.account = new Account("adham", "1234");
     }
 
 }

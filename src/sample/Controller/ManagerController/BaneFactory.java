@@ -2,8 +2,8 @@ package sample.Controller.ManagerController;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
+import sample.Controller.IStageControl;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**

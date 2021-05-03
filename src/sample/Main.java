@@ -5,20 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.Controller.StageFactory;
+import sample.Model.Chef;
+import sample.Model.StaffList;
+import sample.Model.Waiter;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("View/LoginPortalView.fxml"));
-        primaryStage.setTitle("Resturant System");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-        Stage stage = new Stage();
-        Parent toor = FXMLLoader.load(getClass().getResource("View/ManagerView/ManagerHomeView.fxml"));
-        stage.setScene(new Scene(toor));
-        stage.show();
-
+    public void start(Stage primaryStage) throws Exception {
+        StageFactory stageFactory = new StageFactory("mainPage");
+        stageFactory.changeView();
+        StaffList.addNewEmployee(new Chef("adham", "adham", 1234));
+        StaffList.addNewEmployee(new Waiter("adham", "adham", 1234));
     }
 
 

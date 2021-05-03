@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 public class StaffList {
     private static final ArrayList<Staff> listOfStaff = new ArrayList<>();
-
     /**
      * Add new employee if dosen't Exist.
      *
@@ -23,9 +22,6 @@ public class StaffList {
                 listOfStaff.add(new Chef(newMember.name, newMember.id, newMember.salary));
             } else if (newMember.getJopRole().equals("Waiter")){
                 listOfStaff.add(new Waiter(newMember.name, newMember.id, newMember.salary));
-            }
-            for (Staff s : listOfStaff) {
-                System.out.println(s.getJopRole());
             }
             return true;
         }
@@ -40,5 +36,7 @@ public class StaffList {
         return false;
     }
 
-
+    public static ArrayList<Staff> getListOfStaff() {
+        return listOfStaff;
+    }
 }

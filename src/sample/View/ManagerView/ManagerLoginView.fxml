@@ -34,24 +34,29 @@
                               <Font name="Arial Black" size="24.0" />
                            </font>
                         </Label>
-                        <TextField nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="193.0" promptText="User Name">
+                        <TextField fx:id="usernameText" nodeOrientation="LEFT_TO_RIGHT" onKeyTyped="#usernameAction" prefHeight="25.0" prefWidth="193.0" promptText="User Name">
                            <VBox.margin>
                               <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                            </VBox.margin>
                         </TextField>
-                        <PasswordField promptText="Password">
+                        <PasswordField fx:id="passwordText" promptText="Password">
                            <VBox.margin>
                               <Insets left="16.0" right="16.0" />
                            </VBox.margin>
                         </PasswordField>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Login" textFill="WHITE">
+                        <Button fx:id="managerLoginButton" mnemonicParsing="false" onAction="#loginButton" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Login" textFill="WHITE">
                            <VBox.margin>
-                              <Insets top="16.0" />
+                              <Insets bottom="16.0" top="16.0" />
                            </VBox.margin>
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
+                        <Label fx:id="errorLabel" textFill="RED">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                </children>
