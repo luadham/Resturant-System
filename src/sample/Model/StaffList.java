@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Adham Adel
  */
 public class StaffList {
-    private static ArrayList<Staff> listOfStaff;
+    private static final ArrayList<Staff> listOfStaff = new ArrayList<>();
 
     /**
      * Add new employee if dosen't Exist.
@@ -18,11 +18,14 @@ public class StaffList {
      * @return the boolean
      */
     public static boolean addNewEmployee(Staff newMember) {
-        if (!isExistMember(newMember.id)) {
-            if (newMember.jopRole.equals("Chef")) {
+        if (!isExistMember(newMember.getId())) {
+            if (newMember.getJopRole().equals("Chef")) {
                 listOfStaff.add(new Chef(newMember.name, newMember.id, newMember.salary));
-            } else if (newMember.jopRole.equals("Waiter")){
-                listOfStaff.add(new Chef(newMember.name, newMember.id, newMember.salary));
+            } else if (newMember.getJopRole().equals("Waiter")){
+                listOfStaff.add(new Waiter(newMember.name, newMember.id, newMember.salary));
+            }
+            for (Staff s : listOfStaff) {
+                System.out.println(s.getJopRole());
             }
             return true;
         }
@@ -31,7 +34,7 @@ public class StaffList {
 
     private static boolean isExistMember(String id) {
         for (Staff mem : listOfStaff) {
-            if (mem.id.equals(id))
+            if (mem.getId().equals(id))
                 return true;
         }
         return false;

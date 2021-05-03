@@ -17,4 +17,5 @@ public class Chef extends Staff {
         this.salary = salary;
         this.jopRole = "Chef";
     }
+
 }

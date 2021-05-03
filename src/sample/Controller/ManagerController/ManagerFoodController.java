@@ -32,6 +32,7 @@ public class ManagerFoodController {
             InputControl.clearFields(foodName, foodDescription,foodPrice);
         } else {
             InputControl.setErrorMessage(errorLabel, "Please Enter Correct Data");
+            return;
         }
         if (!isAddSuccessfuly) InputControl.setErrorMessage(errorLabel, "Food Is Already Exist");
     }

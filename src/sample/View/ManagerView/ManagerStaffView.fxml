@@ -36,7 +36,7 @@
             </TextField>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0">
                <children>
-                  <RadioButton fx:id="waiterRadioButton" mnemonicParsing="false" text="Waiter">
+                  <RadioButton fx:id="waiterRadioButton" mnemonicParsing="false" onAction="#waiterRadioAction" text="Waiter">
                      <HBox.margin>
                         <Insets right="16.0" />
                      </HBox.margin>
@@ -44,7 +44,7 @@
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="chefRadioButton" mnemonicParsing="false" text="Chef">
+                  <RadioButton fx:id="chefRadioButton" mnemonicParsing="false" onAction="#chefRadioAction" text="Chef">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -56,9 +56,17 @@
                   <Font size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="32.0" />
+                  <Insets bottom="16.0" />
                </VBox.margin>
             </Button>
+            <Label fx:id="errorLabel" textFill="RED">
+               <VBox.margin>
+                  <Insets bottom="32.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>

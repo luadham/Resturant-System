@@ -1,6 +1,7 @@
 package sample.Controller;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 
@@ -61,5 +62,13 @@ public class InputControl {
         for (TextInputControl textField : textFields) {
             textField.setText("");
         }
+    }
+
+    public static boolean isChecked(RadioButton... radioButtons) {
+        for (RadioButton radioButton : radioButtons) {
+            if (radioButton.isSelected())
+                return true;
+        }
+        return false;
     }
 }
