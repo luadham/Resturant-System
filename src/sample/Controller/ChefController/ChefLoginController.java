@@ -26,6 +26,8 @@ public class ChefLoginController {
     Button chefLogin;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Button homePageButton;
 
     @FXML
     private void userNameAction(KeyEvent event) {
@@ -46,5 +48,14 @@ public class ChefLoginController {
         }
     }
 
-
+    @FXML
+    private void homePageButton(ActionEvent event) {
+        StageFactory stageFactory = null;
+        try {
+            stageFactory = new StageFactory(homePageButton);
+            stageFactory.changeView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

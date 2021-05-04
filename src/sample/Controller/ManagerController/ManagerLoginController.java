@@ -27,6 +27,8 @@ public class ManagerLoginController {
     private Label errorLabel;
     @FXML
     private Button managerLoginButton;
+    @FXML
+    private Button homePageButton;
 
     @FXML
     private void usernameAction(KeyEvent event) {
@@ -37,7 +39,6 @@ public class ManagerLoginController {
     private void loginButton(ActionEvent event) {
         if (InputControl.verifyTextField(usernameText, passwordText)
             && LoginControl.validateManager(usernameText.getText(), passwordText.getText())) {
-            System.out.println("Adham");
             try {
                 StageFactory stageFactory = new StageFactory(managerLoginButton);
                 stageFactory.changeView();
@@ -47,6 +48,17 @@ public class ManagerLoginController {
         } else {
             System.out.println(passwordText.getText());
             InputControl.setErrorMessage(errorLabel, "There is something Wrong!");
+        }
+    }
+
+    @FXML
+    private void homePageButton(ActionEvent event) {
+        StageFactory stageFactory = null;
+        try {
+            stageFactory = new StageFactory(homePageButton);
+            stageFactory.changeView();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

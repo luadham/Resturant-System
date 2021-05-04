@@ -25,7 +25,9 @@ public class WaiterLoginController {
     @FXML
     private Button waiterLoginButton;
     @FXML
-    Label errorLabel;
+    private Label errorLabel;
+    @FXML
+    private Button homePageButton;
 
     @FXML
     private void usernameAction(KeyEvent event) {
@@ -43,6 +45,16 @@ public class WaiterLoginController {
             }
         } else {
             InputControl.setErrorMessage(errorLabel, "There is Something Wrong");
+        }
+    }
+
+    @FXML
+    private void homePageButton(ActionEvent event) {
+        try {
+            StageFactory stageFactory = new StageFactory(homePageButton);
+            stageFactory.changeView();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

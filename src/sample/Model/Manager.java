@@ -12,7 +12,7 @@ public class Manager extends Staff {
         this.salary = salary;
         this.jopRole = "Manager";
     }
-    public Manager createManager(String name, String id, double salary) {
+    public static Manager createManager(String name, String id, double salary) {
         manager = new Manager(name, id, salary);
         return manager;
     }

@@ -5,11 +5,11 @@ package sample.Model;
  * @author Adham Adel
  */
 public abstract class Staff {
-    String name;
-    String id;
-    String jopRole;
-    double salary;
-    Account account;
+    protected String name;
+    protected String id;
+    protected String jopRole;
+    protected double salary;
+    protected Account account;
 
     public Account getAccount() {
         return account;

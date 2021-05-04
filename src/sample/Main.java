@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Controller.StageFactory;
 import sample.Model.Chef;
+import sample.Model.Manager;
 import sample.Model.StaffList;
 import sample.Model.Waiter;
 
@@ -18,6 +19,7 @@ public class Main extends Application {
         stageFactory.changeView();
         StaffList.addNewEmployee(new Chef("adham", "adham", 1234));
         StaffList.addNewEmployee(new Waiter("adham", "adham", 1234));
+
     }
 
 

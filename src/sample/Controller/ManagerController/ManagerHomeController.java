@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import sample.Controller.StageFactory;
 
 import java.io.IOException;
 
@@ -17,6 +18,8 @@ public class ManagerHomeController{
 
     @FXML
     private Pane changedPane;
+    @FXML
+    private Button homePageButton;
 
     /**
      * Initialize.
@@ -43,4 +46,14 @@ public class ManagerHomeController{
         baneFactory.changePane(changedPane);
     }
 
+    @FXML
+    private void homePageButton(ActionEvent event) {
+        try {
+            StageFactory stageFactory = new StageFactory(homePageButton);
+            stageFactory.changeView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

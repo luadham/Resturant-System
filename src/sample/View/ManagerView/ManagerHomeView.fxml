@@ -31,7 +31,15 @@
                   <Button fx:id="manageStaffButton" mnemonicParsing="false" onAction="#handelActionButton" style="-fx-background-color: #fe7853;" text="Manage Staff" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
-                     </font></Button>
+                     </font>
+                     <HBox.margin>
+                        <Insets right="16.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#homePageButton" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Home Page" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>

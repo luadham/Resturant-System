@@ -45,6 +45,10 @@ public class StageFactory implements IStageControl {
             case "waiterLoginButton":
                 root = FXMLLoader.load(getClass().getResource("../View/WaiterView/WaiterGetOrderView.fxml"));
                 break;
+            case "homePageButton":
+                root = FXMLLoader.load(getClass().getResource("../View/LoginPortalView.fxml"));
+                this.stageName = "Resturant System";
+                break;
             default:
                 System.out.println("Scene Not Found");
                 break;
