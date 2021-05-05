@@ -7,11 +7,13 @@ import javafx.scene.control.TextInputControl;
 
 /**
  * The type Input control to Control Inputs
+ *
  * @author Adham Adel
  */
 public class InputControl {
     /**
      * Verify text field.
+     *
      * @param textFields the text fields
      * @return true if TextField is not empty
      */
@@ -52,18 +54,30 @@ public class InputControl {
 
     /**
      * Remove error message.
+     *
      * @param label the label
      */
     public static void removeErrorMessage(Label label) {
         label.setText("");
     }
 
+    /**
+     * Clear fields.
+     *
+     * @param textFields the text fields
+     */
     public static void clearFields(TextInputControl... textFields) {
         for (TextInputControl textField : textFields) {
             textField.setText("");
         }
     }
 
+    /**
+     * Is checked boolean.
+     *
+     * @param radioButtons the radio buttons
+     * @return the boolean
+     */
     public static boolean isChecked(RadioButton... radioButtons) {
         for (RadioButton radioButton : radioButtons) {
             if (radioButton.isSelected())
@@ -71,4 +85,5 @@ public class InputControl {
         }
         return false;
     }
+
 }

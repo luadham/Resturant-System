@@ -27,7 +27,7 @@ public class ManagerHomeController{
      * @throws IOException the io exception
      */
     @FXML
-    public void initialize() throws IOException {
+    private void initialize() throws IOException {
         Pane defaultPane = FXMLLoader.load(getClass().getResource("../../View/ManagerView/SalesView.fxml"));
         changedPane.getChildren().addAll(defaultPane);
     }

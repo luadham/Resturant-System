@@ -6,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Controller.StageFactory;
-import sample.Model.Chef;
-import sample.Model.Manager;
-import sample.Model.StaffList;
-import sample.Model.Waiter;
+import sample.Model.*;
 
 public class Main extends Application {
 
@@ -19,7 +16,9 @@ public class Main extends Application {
         stageFactory.changeView();
         StaffList.addNewEmployee(new Chef("adham", "adham", 1234));
         StaffList.addNewEmployee(new Waiter("adham", "adham", 1234));
-
+        FoodList.addNewFood(new Food("Burger", "Meat", 12));
+        FoodList.addNewFood(new Food("Pizza", "Italy pizza", 14));
+        FoodList.addNewFood(new Food("Fried Chekein", "Cook", 16));
     }
 
 
