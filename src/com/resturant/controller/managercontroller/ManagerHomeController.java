@@ -1,5 +1,6 @@
 package com.resturant.controller.managercontroller;
 
+import com.resturant.controller.ErrorPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +54,8 @@ public class ManagerHomeController{
             StageFactory stageFactory = new StageFactory(homePageButton);
             stageFactory.getView();
         } catch (IOException e) {
-            e.printStackTrace();
+            ErrorPage errorPage = new ErrorPage();
+            errorPage.showErrorPage();
         }
 
     }

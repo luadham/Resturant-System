@@ -1,7 +1,10 @@
 package com.resturant.controller.chefcontroller;
 
+import com.resturant.controller.ErrorPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -37,15 +40,15 @@ public class ChefLoginController {
 
     @FXML
     private void doLoginChef(ActionEvent event) {
+        StageFactory stageFactory = null;
         if (InputValidationController.verifyTextField(usernameText, passwordText)
             && LoginController.validateStaff(usernameText.getText(), passwordText.getText())) {
             try {
-                StageFactory stageFactory = new StageFactory(chefLogin);
+                stageFactory = new StageFactory(chefLogin);
                 stageFactory.getView();
-            } catch (IOException e) {
-                // some screen to view error
-                // some error screen
-                e.printStackTrace();
+            } catch (Exception e) {
+                ErrorPage errorPage = new ErrorPage();
+                errorPage.showErrorPage();
             }
         } else {
             InputValidationController.setErrorMessage(errorLabel, "There is Something Wrong");

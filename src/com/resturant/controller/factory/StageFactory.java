@@ -46,7 +46,7 @@ public class StageFactory implements IStageController {
                 root = FXMLLoader.load(getClass().getResource("../../view/waiterview/WaiterGetOrderView.fxml"));
                 break;
             case "homePageButton":
-                root = FXMLLoader.load(getClass().getResource("../../View/LoginPortalView.fxml"));
+                root = FXMLLoader.load(getClass().getResource("../../view/LoginPortalView.fxml"));
                 this.stageName = "Resturant System";
                 break;
             default:
@@ -56,7 +56,7 @@ public class StageFactory implements IStageController {
     }
     public StageFactory(String stageName) throws IOException {
         if ("mainPage".equals(stageName)) {
-            root = FXMLLoader.load(getClass().getResource("../../View/LoginPortalView.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../../view/LoginPortalView.fxml"));
             this.stageName = "Resturant System";
         }
     }

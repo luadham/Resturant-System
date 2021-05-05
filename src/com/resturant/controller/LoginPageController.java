@@ -9,6 +9,7 @@ import java.io.IOException;
 
 /**
  * The type Login page controller.
+ *
  * @author Adham Adel
  */
 public class LoginPageController {
@@ -19,7 +20,8 @@ public class LoginPageController {
             StageFactory stageFactory = new StageFactory(clickedButton);
             stageFactory.getView();
         } catch (IOException e) {
-            e.printStackTrace();
+            ErrorPage errorPage = new ErrorPage();
+            errorPage.showErrorPage();
         }
     }
 }

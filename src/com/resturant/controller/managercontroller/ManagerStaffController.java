@@ -10,6 +10,10 @@ import com.resturant.controller.InputValidationController;
 import com.resturant.model.Staff;
 import com.resturant.model.StaffList;
 
+/**
+ * The type Manager staff controller.
+ * @author Adham Adel
+ */
 public class ManagerStaffController {
     @FXML
     private TextField idTextField;
@@ -42,7 +46,6 @@ public class ManagerStaffController {
     private void saveStaff(ActionEvent event) {
         Staff newStaffMember;
         boolean isAddedSuccessfuly = false;
-        //System.out.println(InputControl.verifyTextField(idTextField, nameTextField, salaryTextField));
         if (InputValidationController.verifyTextField(idTextField, nameTextField, salaryTextField)
             && (InputValidationController.isChecked(waiterRadioButton) || InputValidationController.isChecked(chefRadioButton))
             && InputValidationController.verifyDoubleNumber(salaryTextField)) {

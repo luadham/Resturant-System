@@ -1,5 +1,6 @@
 package com.resturant.controller.waitercontroller;
 
+import com.resturant.controller.ErrorPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -41,7 +42,8 @@ public class WaiterLoginController {
                 StageFactory stageFactory = new StageFactory(waiterLoginButton);
                 stageFactory.getView();
             } catch (IOException e) {
-                e.printStackTrace();
+                ErrorPage errorPage = new ErrorPage();
+                errorPage.showErrorPage();
             }
         } else {
             InputValidationController.setErrorMessage(errorLabel, "There is Something Wrong");
@@ -54,7 +56,8 @@ public class WaiterLoginController {
             StageFactory stageFactory = new StageFactory(homePageButton);
             stageFactory.getView();
         } catch (IOException e) {
-            e.printStackTrace();
+            ErrorPage errorPage = new ErrorPage();
+            errorPage.showErrorPage();
         }
     }
 

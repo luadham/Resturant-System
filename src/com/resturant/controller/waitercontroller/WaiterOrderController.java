@@ -6,6 +6,10 @@ import javafx.scene.control.*;
 import com.resturant.model.Food;
 import com.resturant.model.FoodList;
 
+/**
+ * The type Waiter order controller.
+ * @author Adham Adel
+ */
 public class WaiterOrderController {
     @FXML
     private TextField firstNameText;

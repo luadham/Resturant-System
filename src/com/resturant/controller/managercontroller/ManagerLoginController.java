@@ -1,5 +1,6 @@
 package com.resturant.controller.managercontroller;
 
+import com.resturant.controller.ErrorPage;
 import com.resturant.controller.factory.StageFactory;
 import com.resturant.controller.InputValidationController;
 import com.resturant.controller.LoginController;
@@ -43,7 +44,8 @@ public class ManagerLoginController {
                 StageFactory stageFactory = new StageFactory(managerLoginButton);
                 stageFactory.getView();
             } catch (IOException e) {
-                e.printStackTrace();
+                ErrorPage errorPage = new ErrorPage();
+                errorPage.showErrorPage();
             }
         } else {
             System.out.println(passwordText.getText());

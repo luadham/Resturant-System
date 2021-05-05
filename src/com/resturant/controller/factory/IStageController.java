@@ -5,6 +5,5 @@ package com.resturant.controller.factory;
  * @author Adham Adel
  */
 public interface IStageController {
-
     void getView();
 }
