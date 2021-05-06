@@ -44,7 +44,7 @@
                               <Insets bottom="16.0" left="16.0" right="16.0" />
                            </VBox.margin>
                         </PasswordField>
-                        <Button fx:id="waiterLoginButton" mnemonicParsing="false" onAction="#waiterButtonAction" style="-fx-background-color: #4aadff;" text="Login" textFill="WHITE">
+                        <Button fx:id="waiterLoginButton" mnemonicParsing="false" onAction="#doLogin" style="-fx-background-color: #4aadff;" text="Login" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Insets bottom="16.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#homePageButton" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Home Page" textFill="WHITE">
+                        <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#goToHomePage" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Home Page" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

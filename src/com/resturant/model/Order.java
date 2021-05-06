@@ -7,6 +7,12 @@ public class Order {
     private int orderQuantity;
     private ArrayList<Food> orderedFood;
 
+    public Order(int orderId, int orderQuantity, ArrayList<Food> orderedFood) {
+        this.orderId = orderId;
+        this.orderQuantity = orderQuantity;
+        this.orderedFood = orderedFood;
+    }
+
     public int getOrderId() {
         return orderId;
     }

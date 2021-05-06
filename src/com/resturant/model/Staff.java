@@ -6,7 +6,7 @@ import java.io.Serializable;
  * The type Staff.
  * @author Adham Adel
  */
-public abstract class Staff implements Serializable {
+public abstract class Staff{
     protected String name;
     protected String id;
     protected String jopRole;

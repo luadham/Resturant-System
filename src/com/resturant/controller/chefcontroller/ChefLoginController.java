@@ -56,7 +56,7 @@ public class ChefLoginController {
     }
 
     @FXML
-    private void homePageButton(ActionEvent event) {
+    private void goToHomePage(ActionEvent event) {
         StageFactory stageFactory = null;
         try {
             stageFactory = new StageFactory(homePageButton);

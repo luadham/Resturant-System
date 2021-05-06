@@ -16,4 +16,5 @@ public class Manager extends Staff {
         manager = new Manager(name, id, salary);
         return manager;
     }
+
 }

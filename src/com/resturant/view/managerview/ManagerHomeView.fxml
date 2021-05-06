@@ -35,7 +35,7 @@
                      <HBox.margin>
                         <Insets right="16.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#homePageButton" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Home Page" textFill="WHITE">
+                  <Button fx:id="homePageButton" mnemonicParsing="false" onAction="#goToHomePage" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Home Page" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

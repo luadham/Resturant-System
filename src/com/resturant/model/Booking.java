@@ -22,4 +22,13 @@ public class Booking {
     public Table getTable() {
         return table;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookId='" + bookId + '\'' +
+                ", customer=" + customer +
+                ", table=" + table +
+                '}';
+    }
 }

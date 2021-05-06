@@ -35,7 +35,7 @@ public class WaiterLoginController {
         InputValidationController.clearErrorMessage(errorLabel);
     }
     @FXML
-    private void waiterButtonAction(ActionEvent event) {
+    private void doLogin(ActionEvent event) {
         if (InputValidationController.verifyTextField(usernameText, passwordText)
             && LoginController.validateStaff(usernameText.getText(), passwordText.getText())) {
             try {
@@ -51,7 +51,7 @@ public class WaiterLoginController {
     }
 
     @FXML
-    private void homePageButton(ActionEvent event) {
+    private void goToHomePage(ActionEvent event) {
         try {
             StageFactory stageFactory = new StageFactory(homePageButton);
             stageFactory.getView();

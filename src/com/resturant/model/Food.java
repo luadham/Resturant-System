@@ -15,10 +15,6 @@ public class Food {
         this.price = price;
     }
 
-    public Food(String foodName) {
-        this.foodName = foodName;
-    }
-
     public String getFoodName() {
         return foodName;
     }

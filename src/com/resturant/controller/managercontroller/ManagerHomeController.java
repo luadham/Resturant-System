@@ -49,7 +49,7 @@ public class ManagerHomeController{
     }
 
     @FXML
-    private void homePageButton(ActionEvent event) {
+    private void goToHomePage(ActionEvent event) {
         try {
             StageFactory stageFactory = new StageFactory(homePageButton);
             stageFactory.getView();

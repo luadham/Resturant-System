@@ -1,9 +1,6 @@
 package com.resturant.controller;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputControl;
+import javafx.scene.control.*;
 
 /**
  * The type Input control to Control Inputs
@@ -35,6 +32,17 @@ public class InputValidationController {
         for (TextField textField : textFields) {
             try {
                 Double.parseDouble(textField.getText());
+            } catch (NumberFormatException exception) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean verifyIntNumber(TextField... textFields) {
+        for (TextField textField : textFields) {
+            try {
+                Integer.parseInt(textField.getText());
             } catch (NumberFormatException exception) {
                 return false;
             }
@@ -84,6 +92,14 @@ public class InputValidationController {
                 return true;
         }
         return false;
+    }
+
+    public static boolean verifyComboBox(ComboBox<String>... comboBoxes) {
+        for (ComboBox<String> comboBox : comboBoxes) {
+            if (comboBox.getValue().equals(""))
+                return false;
+        }
+        return true;
     }
 
 }

@@ -17,6 +17,7 @@ public class Main extends Application {
         FoodList.addNewFood(new Food("Burger", "Meat", 12));
         FoodList.addNewFood(new Food("Pizza", "Italy pizza", 14));
         FoodList.addNewFood(new Food("Fried Chekein", "Cook", 16));
+
     }
 
 

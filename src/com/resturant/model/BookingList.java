@@ -16,7 +16,6 @@ public class BookingList {
     }
 
     public static ArrayList<Booking> getBookingsList() {
-        // if not null
         return bookingsList;
     }
 }

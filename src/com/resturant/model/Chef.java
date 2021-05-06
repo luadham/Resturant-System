@@ -6,7 +6,7 @@ import java.io.Serializable;
  * The type Chef.
  * @author Adham Adel
  */
-public class Chef extends Staff implements Serializable {
+public class Chef extends Staff {
     /**
      * Instantiates a new Chef.
      * @param name   the name

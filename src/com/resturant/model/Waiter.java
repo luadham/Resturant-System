@@ -1,13 +1,10 @@
 package com.resturant.model;
 
-
-import java.io.Serializable;
-
 /**
  * The type Waiter.
  * @author Adham Adel
  */
-public class Waiter extends Staff implements Serializable {
+public class Waiter extends Staff {
     /**
      * Instantiates a new Waiter.
      *

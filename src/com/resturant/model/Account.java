@@ -2,7 +2,7 @@ package com.resturant.model;
 
 import java.io.Serializable;
 
-public class Account implements Serializable {
+public class Account {
     private String id;
     private String pwd;
 
