@@ -4,6 +4,7 @@ import com.resturant.controller.managercontroller.factory.StaffFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import com.resturant.controller.InputValidationController;
@@ -15,18 +16,15 @@ import com.resturant.model.StaffList;
  * @author Adham Adel
  */
 public class ManagerStaffController {
-    @FXML
-    private TextField idTextField;
-    @FXML
-    private TextField nameTextField;
-    @FXML
-    private TextField salaryTextField;
-    @FXML
-    private RadioButton waiterRadioButton;
-    @FXML
-    private RadioButton chefRadioButton;
-    @FXML
-    private Label errorLabel;
+    @FXML private TextField idTextField;
+    @FXML private TextField nameTextField;
+    @FXML private TextField salaryTextField;
+    @FXML private PasswordField pwdTextField;
+    @FXML private RadioButton waiterRadioButton;
+    @FXML private RadioButton chefRadioButton;
+    @FXML private Label errorLabel;
+
+    private final StaffList staffList = StaffList.getStaffList();
 
     @FXML
     private void waiterRadioAction(ActionEvent event) {
@@ -54,10 +52,11 @@ public class ManagerStaffController {
                     waiterRadioButton.isSelected(),
                     nameTextField.getText(),
                     idTextField.getText(),
-                    Double.parseDouble(salaryTextField.getText())
+                    Double.parseDouble(salaryTextField.getText()),
+                    pwdTextField.getText()
             );
-            isAddedSuccessfuly = StaffList.addNewEmployee(staffFactory.createNewStaff());
-            InputValidationController.clearFields(idTextField, nameTextField, salaryTextField);
+            isAddedSuccessfuly = staffList.addNewStaffMember(staffFactory.createNewStaff());
+            InputValidationController.clearFields(idTextField, nameTextField, salaryTextField, pwdTextField);
             waiterRadioButton.setSelected(false);
             chefRadioButton.setSelected(false);
         } else {
@@ -65,7 +64,6 @@ public class ManagerStaffController {
             return;
         }
         if (!isAddedSuccessfuly) {
-            System.out.println("From Here");
             InputValidationController.setErrorMessage(errorLabel, "Member is Already Exist!");
         }
     }

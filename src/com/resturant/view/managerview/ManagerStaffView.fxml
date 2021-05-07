@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
@@ -34,6 +35,11 @@
                   <Insets bottom="16.0" left="64.0" right="64.0" />
                </VBox.margin>
             </TextField>
+            <PasswordField fx:id="pwdTextField" promptText="Password">
+               <VBox.margin>
+                  <Insets left="64.0" right="64.0" />
+               </VBox.margin>
+            </PasswordField>
             <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0">
                <children>
                   <RadioButton fx:id="waiterRadioButton" mnemonicParsing="false" onAction="#waiterRadioAction" text="Waiter">

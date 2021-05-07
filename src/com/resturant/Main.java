@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import com.resturant.controller.factory.StageFactory;
 
+import java.util.ArrayList;
+
 
 public class Main extends Application {
 
@@ -12,16 +14,26 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         StageFactory stageFactory = new StageFactory("mainPage");
         stageFactory.getView();
-        StaffList.addNewEmployee(new Chef("adham", "adham", 1234));
-        StaffList.addNewEmployee(new Waiter("adham", "adham", 1234));
-        FoodList.addNewFood(new Food("Burger", "Meat", 12));
-        FoodList.addNewFood(new Food("Pizza", "Italy pizza", 14));
-        FoodList.addNewFood(new Food("Fried Chekein", "Cook", 16));
-
     }
 
 
     public static void main(String[] args) {
+        RMS rms = new RMS();
+        rms.createSystem();
+        // For Development Only
+        StaffList staffList = StaffList.getStaffList();
+        staffList.addNewStaffMember(new Waiter(
+                "adham",
+                "adham",
+                12,
+                new Account("adham", "1234")
+        ));
+        staffList.addNewStaffMember(new Chef(
+                "adham",
+                "adham",
+                12,
+                new Account("adham", "1234")
+        ));
         launch(args);
     }
 }

@@ -12,10 +12,11 @@ public class Waiter extends Staff {
      * @param id     the id
      * @param salary the salary
      */
-    public Waiter(String name, String id, double salary) {
+    public Waiter(String name, String id, double salary, Account account) {
         this.name = name;
         this.id = id;
         this.salary = salary;
         this.jopRole = "Waiter";
+        this.account = account;
     }
 }

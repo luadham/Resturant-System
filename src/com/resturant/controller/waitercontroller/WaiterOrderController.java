@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import javax.xml.soap.Text;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,17 +22,17 @@ public class WaiterOrderController {
     @FXML private TextField phoneNumberText;
     @FXML private TextField tableNumber;
     @FXML private Button homePageButton;
-    @FXML private ComboBox<String> foodList;
+    @FXML private ComboBox<String> foodListMenu;
     @FXML private Label quantityLabel;
     @FXML private Label errorLabel;
     @FXML private Label totalPrice;
-
-    private ArrayList<Food> listOfOrderedFood = new ArrayList<>();
+    private final FoodList foodList = FoodList.getFoodList();
+    private final ArrayList<Food> listOfOrderedFood = new ArrayList<>();
 
     @FXML
     private void initialize() {
-        for (Food food : FoodList.getListOfFood()) {
-            foodList.getItems().add(food.getFoodName());
+        for (Food food : foodList.getListOfFood()) {
+            foodListMenu.getItems().add(food.getFoodName());
         }
     }
 
@@ -43,16 +42,16 @@ public class WaiterOrderController {
         Button btn = (Button) event.getSource();
         String btnName = btn.getId();
         int currentQuantityValue = Integer.parseInt(quantityLabel.getText());
-        if (InputValidationController.verifyComboBox(foodList)) {
+        if (InputValidationController.verifyComboBox(foodListMenu)) {
             switch (btnName) {
                 case "incrementButton":
                     quantityLabel.setText(String.valueOf(++currentQuantityValue));
-                    listOfOrderedFood.add(FoodList.getFoodByName(foodList.getValue()));
+                    listOfOrderedFood.add(foodList.getFoodByName(foodListMenu.getValue()));
                     break;
                 case "decrementButton":
                     if (currentQuantityValue > 0) {
                         quantityLabel.setText(String.valueOf(--currentQuantityValue));
-                        listOfOrderedFood.remove(FoodList.getFoodByName(foodList.getValue()));
+                        listOfOrderedFood.remove(foodList.getFoodByName(foodListMenu.getValue()));
                     }
                     break;
                 default:
@@ -70,27 +69,19 @@ public class WaiterOrderController {
     @FXML
     private void doOrder(ActionEvent event) {
         if (InputValidationController.verifyTextField(firstNameText, lastNameText, emailText, phoneNumberText , tableNumber)
-            && InputValidationController.verifyComboBox(foodList) && !quantityLabel.getText().equals("0")
+            && InputValidationController.verifyComboBox(foodListMenu) && !quantityLabel.getText().equals("0")
             && InputValidationController.verifyIntNumber(phoneNumberText, tableNumber)) {
-            Customer customer = new Customer(
+            OrderMaker orderMaker = new OrderMaker(
                     firstNameText.getText(),
                     lastNameText.getText(),
                     emailText.getText(),
-                    phoneNumberText.getText()
-            );
-            Order order = new Order(
-                    123,
-                    Integer.parseInt(quantityLabel.getText()),
+                    phoneNumberText.getText(),
+                    quantityLabel.getText(),
+                    tableNumber.getText(),
                     listOfOrderedFood
             );
-            Table table = new Table(
-              Integer.parseInt(tableNumber.getText()),
-              true,
-              order
-            );
-            Booking booking = new Booking("123", customer, table);
-            Invoice invoice = new Invoice(booking);
-            totalPrice.setText(String.valueOf(invoice.getOverallPrice()) + " $");
+            orderMaker.prepareOrder();
+            totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
         } else {
             InputValidationController.setErrorMessage(errorLabel , "There is Wrong Data");
         }

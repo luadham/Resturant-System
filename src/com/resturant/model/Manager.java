@@ -4,17 +4,36 @@ package com.resturant.model;
  * The type Manager.
  * @author Adham Adel
  */
-public class Manager extends Staff {
+public class Manager {
     private static Manager manager;
-    private Manager(String name, String id, double salary) {
+    private String name;
+    private String pwd;
+    private Manager(String name, String pwd) {
         this.name = name;
-        this.id = id;
-        this.salary = salary;
-        this.jopRole = "Manager";
+        this.pwd = pwd;
     }
-    public static Manager createManager(String name, String id, double salary) {
-        manager = new Manager(name, id, salary);
+    public static Manager createManager(String name, String pwd) {
+        manager = new Manager(name, pwd);
         return manager;
     }
 
+    public static Manager getManager() {
+        return manager;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 }

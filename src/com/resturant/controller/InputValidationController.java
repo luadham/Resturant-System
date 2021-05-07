@@ -39,6 +39,12 @@ public class InputValidationController {
         return true;
     }
 
+    /**
+     * Verify int number boolean.
+     *
+     * @param textFields the text fields
+     * @return the boolean
+     */
     public static boolean verifyIntNumber(TextField... textFields) {
         for (TextField textField : textFields) {
             try {
@@ -94,12 +100,14 @@ public class InputValidationController {
         return false;
     }
 
-    public static boolean verifyComboBox(ComboBox<String>... comboBoxes) {
-        for (ComboBox<String> comboBox : comboBoxes) {
-            if (comboBox.getValue().equals(""))
-                return false;
-        }
-        return true;
+    /**
+     * Verify combo box boolean.
+     *
+     * @param comboBoxes the combo boxes
+     * @return the boolean
+     */
+    public static boolean verifyComboBox(ComboBox<String> comboBoxes) {
+        return !comboBoxes.getValue().equals("");
     }
 
 }

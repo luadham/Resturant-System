@@ -40,7 +40,7 @@
                   <TextField fx:id="lastNameText" promptText="Last Name" GridPane.columnIndex="1" />
                   <TextField fx:id="emailText" promptText="E-mail" GridPane.rowIndex="1" />
                   <TextField fx:id="phoneNumberText" promptText="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="foodList" onAction="#changeFood" prefHeight="25.0" prefWidth="260.0" promptText="Choose Food" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="foodListMenu" onAction="#changeFood" prefHeight="25.0" prefWidth="260.0" promptText="Choose Food" GridPane.rowIndex="2" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8c8c8b;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <Button fx:id="incrementButton" mnemonicParsing="false" onAction="#changeQuantity" style="-fx-background-color: #f3f3f3;" text="+">

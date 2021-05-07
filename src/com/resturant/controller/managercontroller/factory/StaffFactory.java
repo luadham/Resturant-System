@@ -1,5 +1,6 @@
 package com.resturant.controller.managercontroller.factory;
 
+import com.resturant.model.Account;
 import com.resturant.model.Chef;
 import com.resturant.model.Staff;
 import com.resturant.model.Waiter;
@@ -20,11 +21,12 @@ public class StaffFactory {
      * @param id       the id
      * @param salary   the salary
      */
-    public StaffFactory(boolean isChef, boolean isWaiter , String name, String id, double salary) {
+    public StaffFactory(boolean isChef, boolean isWaiter , String name, String id, double salary, String pwd) {
+        Account account = new Account(id, pwd);
         if (isChef)
-            staffMember = new Chef(name, id, salary);
+            staffMember = new Chef(name, id, salary, account);
         else
-            staffMember = new Waiter(name, id, salary);
+            staffMember = new Waiter(name, id, salary, account);
     }
 
     /**

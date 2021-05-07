@@ -1,5 +1,6 @@
 package com.resturant.controller;
 
+import com.resturant.model.Manager;
 import com.resturant.model.Staff;
 import com.resturant.model.StaffList;
 
@@ -18,7 +19,8 @@ public class LoginController {
      * @return the boolean
      */
     public static boolean validateManager(String inputName, String inputPassword) {
-        return inputName.equals("adham") && inputPassword.equals("1234");
+        Manager m = Manager.getManager();
+        return inputName.equals(m.getName()) && inputPassword.equals(m.getPwd());
     }
 
     /**
@@ -29,7 +31,8 @@ public class LoginController {
      * @return the boolean
      */
     public static boolean validateStaff(String id, String pwd) {
-        ArrayList<Staff> list = StaffList.getListOfStaff();
+        StaffList staffList = StaffList.getStaffList();
+        ArrayList<Staff> list = staffList.getListOfStaff();
         for (Staff member : list) {
             if (member.getAccount().getId().equals(id) && member.getAccount().getPwd().equals(pwd))
                 return true;

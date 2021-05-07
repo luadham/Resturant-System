@@ -13,12 +13,12 @@ public class Chef extends Staff {
      * @param id     the id
      * @param salary the salary
      */
-    public Chef(String name, String id, double salary) {
+    public Chef(String name, String id, double salary, Account account) {
         this.name = name;
         this.id = id;
         this.salary = salary;
         this.jopRole = "Chef";
-        this.account = new Account("adham", "1234");
+        this.account = account;
     }
 
 }

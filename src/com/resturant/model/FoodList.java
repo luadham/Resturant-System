@@ -8,45 +8,47 @@ import java.util.ArrayList;
  * @author Adham Adel
  */
 public class FoodList {
-    private static final ArrayList<Food> listOfFood = new ArrayList<>();
+    private static FoodList foodList;
+    private ArrayList<Food> listOfFood = new ArrayList<>();
 
-    /**
-     * Add new food if not exist
-     *
-     * @param newFood the new food
-     * @return the boolean
-     * @modifies Add new Food to listOfFood
-     */
-    public static boolean addNewFood(Food newFood) {
-        if (isExist(newFood.getFoodName())) {
-            return false;
-        }
-        listOfFood.add(newFood);
-        return true;
+    private FoodList() {
+
     }
 
-    /**
-     * Check if food is already Exist or not
-     * @param foodName
-     */
-    private static boolean isExist(String foodName) {
+    public static FoodList createFoodList() {
+        foodList = new FoodList();
+        return foodList;
+    }
+
+    public static FoodList getFoodList() {
+        return foodList;
+    }
+
+    public ArrayList<Food> getListOfFood() {
+        return listOfFood;
+    }
+
+    public void setListOfFood(ArrayList<Food> listOfFood) {
+        this.listOfFood = listOfFood;
+    }
+
+    private boolean isExist(Food targetFood) {
         for (Food food : listOfFood) {
-            if (food.getFoodName().equals(foodName))
+            if (food.equals(targetFood))
                 return true;
         }
         return false;
     }
 
-    /**
-     * Gets list of food.
-     *
-     * @return the list of food
-     */
-    public static ArrayList<Food> getListOfFood() {
-        return listOfFood;
+    public boolean addNewFood(Food newFood) {
+        if (!isExist(newFood)) {
+            listOfFood.add(newFood);
+            return true;
+        }
+        return false;
     }
 
-    public static Food getFoodByName(String foodName) {
+    public Food getFoodByName(String foodName) {
         for (Food food : listOfFood) {
             if (food.getFoodName().equals(foodName))
                 return food;

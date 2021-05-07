@@ -13,14 +13,11 @@ import com.resturant.model.FoodList;
  * @author Adham Adel
  */
 public class ManagerFoodController {
-    @FXML
-    private TextField foodName;
-    @FXML
-    private TextField foodPrice;
-    @FXML
-    private TextArea foodDescription;
-    @FXML
-    private Label errorLabel;
+    @FXML private TextField foodName;
+    @FXML private TextField foodPrice;
+    @FXML private TextArea foodDescription;
+    @FXML private Label errorLabel;
+    private final FoodList foodList = FoodList.getFoodList();
 
     @FXML
     private void saveFoodButton() {
@@ -28,7 +25,7 @@ public class ManagerFoodController {
         if (InputValidationController.verifyTextField(foodName, foodDescription,foodPrice)
                 && InputValidationController.verifyDoubleNumber(foodPrice)) {
             Food food = new Food(foodName.getText().trim(), foodDescription.getText().trim(), Double.parseDouble(foodPrice.getText()));
-            isAddSuccessfuly = FoodList.addNewFood(food);
+            isAddSuccessfuly = foodList.addNewFood(food);
             InputValidationController.clearFields(foodName, foodDescription,foodPrice);
         } else {
             InputValidationController.setErrorMessage(errorLabel, "Please Enter Correct Data");

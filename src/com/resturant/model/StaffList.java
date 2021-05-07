@@ -7,34 +7,54 @@ import java.util.ArrayList;
  * @author Adham Adel
  */
 public class StaffList {
-    private static final ArrayList<Staff> listOfStaff = new ArrayList<>();
-    /**
-     * Add new employee if dosen't Exist.
-     *
-     * @param newMember the new member
-     * @return the boolean
-     */
-    public static boolean addNewEmployee(Staff newMember) {
-        if (!isExistMember(newMember.getId())) {
-            if (newMember.getJopRole().equals("Chef")) {
-                listOfStaff.add(new Chef(newMember.name, newMember.id, newMember.salary));
-            } else if (newMember.getJopRole().equals("Waiter")){
-                listOfStaff.add(new Waiter(newMember.name, newMember.id, newMember.salary));
+    private ArrayList<Staff> listOfStaff = new ArrayList<>();
+    private static StaffList staffList;
+    private StaffList() {
+
+    }
+    public static StaffList createStaffList() {
+        staffList = new StaffList();
+        return staffList;
+    }
+
+    public void setListOfStaff(ArrayList<Staff> listOfStaff) {
+        this.listOfStaff = listOfStaff;
+    }
+
+    public static void setStaffList(StaffList staffList) {
+        StaffList.staffList = staffList;
+    }
+
+    public ArrayList<Staff> getListOfStaff() {
+        return listOfStaff;
+    }
+
+    public static StaffList getStaffList() {
+        return staffList;
+    }
+
+    private boolean isExist(Staff staffTarget) {
+        for (Staff staff : listOfStaff) {
+            if (staff.equals(staffTarget)) {
+                return true;
             }
+        }
+        return false;
+    }
+
+    public boolean addNewStaffMember(Staff staffMember) {
+        if (!isExist(staffMember)) {
+            listOfStaff.add(staffMember);
             return true;
         }
         return false;
     }
 
-    private static boolean isExistMember(String id) {
-        for (Staff mem : listOfStaff) {
-            if (mem.getId().equals(id))
-                return true;
+    public Staff getStaffByName(String name) {
+        for (Staff staff : listOfStaff) {
+            if (staff.getName().equals(name))
+                return staff;
         }
-        return false;
-    }
-
-    public static ArrayList<Staff> getListOfStaff() {
-        return listOfStaff;
+        return null;
     }
 }
