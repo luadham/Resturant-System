@@ -2,8 +2,15 @@ package com.resturant.model;
 
 import java.util.ArrayList;
 
+/**
+ * The type Rms. (Restaurant Management System)
+ * @author Adham Adel
+ */
 public class RMS implements IRMS {
 
+    /**
+     * Instantiates a new Rms.
+     */
     public RMS() {
     }
     @Override
