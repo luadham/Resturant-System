@@ -1,6 +1,6 @@
 package com.resturant.model;
 
 public interface IInvoice {
-    Double getOverallPrice();
+    double getOverallPrice();
     String getIInvoiceDetails();
 }

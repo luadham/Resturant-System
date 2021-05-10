@@ -18,6 +18,11 @@ public class OrderMaker implements IOrderMaker {
     private ArrayList<Food> orderdFood;
     private static int bookId;
     private Invoice invoice;
+    private BookingList bookingList;
+    private Customer customer;
+    private Order order;
+    private Table table;
+    private Booking booking;
 
     /**
      * Instantiates a new Order maker.
@@ -42,11 +47,11 @@ public class OrderMaker implements IOrderMaker {
     }
     @Override
     public void prepareOrder() {
-        BookingList bookingList = BookingList.getBookingList();
-        Customer customer = new Customer(firstName, lastName, email, phoneNumber);
-        Order order = new Order(orderId++, quantity, orderdFood);
-        Table table = new Table(tableNumber, true, order);
-        Booking booking = new Booking(bookId++, customer, table);
+        bookingList = BookingList.getBookingList();
+        customer = new Customer(firstName, lastName, email, phoneNumber);
+        order = new Order(orderId++, quantity, orderdFood);
+        table = new Table(tableNumber, true, order);
+        booking = new Booking(bookId++, customer, table);
         bookingList.addNewBooking(booking);
         invoice = new Invoice(booking);
     }
