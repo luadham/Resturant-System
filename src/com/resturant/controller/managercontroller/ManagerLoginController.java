@@ -35,9 +35,8 @@ public class ManagerLoginController {
     private void usernameAction(KeyEvent event) {
         InputValidationController.clearErrorMessage(errorLabel);
     }
-
     @FXML
-    private void doLogin(ActionEvent event) {
+    private void doLogin() {
         if (InputValidationController.verifyTextField(usernameText, passwordText)
             && LoginController.validateManager(usernameText.getText(), passwordText.getText())) {
             try {
@@ -52,7 +51,6 @@ public class ManagerLoginController {
             InputValidationController.setErrorMessage(errorLabel, "There is something Wrong!");
         }
     }
-
     @FXML
     private void getHomeScreen(ActionEvent event) {
         StageFactory stageFactory = null;
@@ -62,5 +60,14 @@ public class ManagerLoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void onLoginClicked(ActionEvent event) {
+        doLogin();
+    }
+    @FXML
+    public void onEnterPressed(KeyEvent event) {
+        if (event.getCode().getName().equals("Enter"))
+            doLogin();
     }
 }

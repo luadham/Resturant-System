@@ -39,7 +39,7 @@ public class ChefLoginController {
 
 
     @FXML
-    private void doLoginChef(ActionEvent event) {
+    private void doLogin() {
         StageFactory stageFactory = null;
         if (InputValidationController.verifyTextField(usernameText, passwordText)
             && LoginController.validateStaff(usernameText.getText(), passwordText.getText())) {
@@ -64,5 +64,14 @@ public class ChefLoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void onEnterPressed(KeyEvent event) {
+        if (event.getCode().getName().equals("Enter"))
+            doLogin();
+    }
+
+    public void onLoginPressed(ActionEvent event) {
+        doLogin();
     }
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.resturant.controller.chefcontroller.ChefLoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onEnterPressed" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.resturant.controller.chefcontroller.ChefLoginController">
    <children>
       <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -44,7 +44,7 @@
                               <Insets left="16.0" right="16.0" />
                            </VBox.margin>
                         </PasswordField>
-                        <Button fx:id="chefLogin" mnemonicParsing="false" onAction="#doLoginChef" style="-fx-background-color: #4aadff;" text="Login" textFill="#fcfcfc">
+                        <Button fx:id="chefLogin" mnemonicParsing="false" onAction="#onLoginPressed" style="-fx-background-color: #4aadff;" text="Login" textFill="#fcfcfc">
                            <VBox.margin>
                               <Insets bottom="16.0" top="16.0" />
                            </VBox.margin>

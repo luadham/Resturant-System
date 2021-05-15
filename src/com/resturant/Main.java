@@ -20,7 +20,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         RMS rms = new RMS();
         rms.createSystem();
-
         launch(args);
     }
 }

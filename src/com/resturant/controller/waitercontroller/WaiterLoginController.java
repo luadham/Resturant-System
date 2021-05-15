@@ -35,7 +35,7 @@ public class WaiterLoginController {
         InputValidationController.clearErrorMessage(errorLabel);
     }
     @FXML
-    private void doLogin(ActionEvent event) {
+    private void doLogin() {
         if (InputValidationController.verifyTextField(usernameText, passwordText)
             && LoginController.validateStaff(usernameText.getText(), passwordText.getText())) {
             try {
@@ -61,4 +61,12 @@ public class WaiterLoginController {
         }
     }
 
+    public void onLoginPressed(ActionEvent event) {
+        doLogin();
+    }
+
+    public void onEnterPressed(KeyEvent event) {
+        if (event.getCode().getName().equals("Enter"))
+            doLogin();
+    }
 }

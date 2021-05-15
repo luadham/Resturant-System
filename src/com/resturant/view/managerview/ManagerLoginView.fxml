@@ -27,7 +27,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eeeaea;" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
+                  <VBox alignment="CENTER" onKeyPressed="#onEnterPressed" prefHeight="400.0" prefWidth="300.0">
                      <children>
                         <Label text="Manager Login" textFill="#fe7853">
                            <font>
@@ -44,7 +44,7 @@
                               <Insets left="16.0" right="16.0" />
                            </VBox.margin>
                         </PasswordField>
-                        <Button fx:id="managerLoginButton" mnemonicParsing="false" onAction="#doLogin" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Login" textFill="WHITE">
+                        <Button fx:id="managerLoginButton" mnemonicParsing="false" onAction="#onLoginClicked" style="-fx-background-color: #4aadff; -fx-border-radius: 12;" text="Login" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="16.0" top="16.0" />
                            </VBox.margin>
