@@ -12,6 +12,7 @@ public class OrderMaker implements IOrderMaker {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private String address;
     private int tableNumber;
     private int quantity;
     private static int orderId;
@@ -48,7 +49,7 @@ public class OrderMaker implements IOrderMaker {
     @Override
     public void prepareOrder() {
         bookingList = BookingList.getBookingList();
-        customer = new Customer(firstName, lastName, email, phoneNumber);
+        customer = new Customer(firstName, lastName, email, phoneNumber, address);
         order = new Order(orderId++, quantity, orderdFood);
         table = new Table(tableNumber, true, order);
         booking = new Booking(bookId++, customer, table);
