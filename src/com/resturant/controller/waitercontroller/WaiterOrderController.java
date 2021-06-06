@@ -31,7 +31,6 @@ public class WaiterOrderController {
 
     @FXML
     private void initialize() {
-
         for (Food food : foodList.getListOfFood()) {
             foodListMenu.getItems().add(food.getFoodName());
         }
