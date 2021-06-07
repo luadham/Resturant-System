@@ -7,12 +7,11 @@ public class Customer {
     private String phoneNumber;
     private String address;
 
-    public Customer(String firstName, String lastName, String email, String phoneNumber, String address) {
+    public Customer(String firstName, String lastName, String email, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.address = address;
     }
 
     public String getFirstName() {
