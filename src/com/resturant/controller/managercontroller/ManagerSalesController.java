@@ -21,7 +21,7 @@ public class ManagerSalesController {
         for (Booking booking : bookings) {
             Invoice invoice = new Invoice(booking);
             totPrice += invoice.getOverallPrice();
-            totalSales.setText(String.valueOf(totPrice));
+            totalSales.setText("Total Income: " + String.valueOf(totPrice));
         }
     }
 
