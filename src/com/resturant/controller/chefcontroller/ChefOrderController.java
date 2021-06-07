@@ -2,6 +2,7 @@ package com.resturant.controller.chefcontroller;
 
 import com.resturant.model.Booking;
 import com.resturant.model.BookingList;
+import com.resturant.model.Table;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -25,13 +26,16 @@ public class ChefOrderController {
 
     @FXML
     private void initialize() {
+        int x=0;
         for (Booking booking : bookings) {
+            bookings.toString();
             flowPane.getChildren().add(generateOrderCard(
                     booking.getBookId(),
                     booking.getTable().getTableNumber(),
-                    "test",
-                    1
+                    booking.getTable().getOrder().getOrderedFood().get(x).getFoodName(),
+                    booking.getTable().getOrder().getOrderQuantity()
             ));
+            x++;
         }
     }
 
