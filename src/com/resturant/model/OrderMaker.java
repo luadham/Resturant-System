@@ -21,6 +21,7 @@ public class OrderMaker implements IOrderMaker {
     private Order order;
     private Table table;
     private Booking booking;
+    private String foodName;
 
     /**
      * Instantiates a new Order maker.
@@ -49,12 +50,27 @@ public class OrderMaker implements IOrderMaker {
         this.orderdFood = listOfOrderdFood;
     }
 
+    public OrderMaker(String firstName, String lastName, String email,
+                      String phoneNumber, String quantity, String tableNumber ,String foodName) {
+        this.customer = new Customer(firstName,lastName, email, phoneNumber);
+        this.quantity = Integer.parseInt(quantity);
+        this.tableNumber = Integer.parseInt(tableNumber);
+        this.foodName = foodName;
+    }
+
     public OrderMaker(String firstName, String lastName, String email, String address,
                       String phoneNumber, String quantity, String tableNumber, ArrayList<Food> listOfOrderdFood) {
         this.customer = new Customer(firstName,lastName, email, phoneNumber, address);
         this.quantity = Integer.parseInt(quantity);
         this.tableNumber = Integer.parseInt(tableNumber);
         this.orderdFood = listOfOrderdFood;
+    }
+    public OrderMaker(String firstName, String lastName, String email, String address,
+                      String phoneNumber, String quantity, String tableNumber, String foodName) {
+        this.customer = new Customer(firstName,lastName, email, phoneNumber, address);
+        this.quantity = Integer.parseInt(quantity);
+        this.tableNumber = Integer.parseInt(tableNumber);
+        this.foodName = foodName;
     }
 
 
@@ -63,7 +79,7 @@ public class OrderMaker implements IOrderMaker {
     @Override
     public void prepareOrder() {
         bookingList = BookingList.getBookingList();
-        order = new Order(orderId++, quantity, orderdFood);
+        order = new Order(orderId++, quantity, foodName);
         table = new Table(tableNumber, true, order);
         booking = new Booking(bookId++, customer, table);
         bookingList.addNewBooking(booking);

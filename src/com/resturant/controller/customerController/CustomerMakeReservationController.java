@@ -24,7 +24,7 @@ public class CustomerMakeReservationController {
     @FXML private TextField lastNameText;
     @FXML private TextField emailText;
     @FXML private TextField phoneNumberText;
-    @FXML private TextField tableNumber;
+    @FXML private ComboBox<String> tableNumber;
     @FXML private Button homePageButton;
     @FXML private ComboBox<String> foodListMenu;
     @FXML private Label quantityLabel;
@@ -36,9 +36,18 @@ public class CustomerMakeReservationController {
 
     @FXML
     private void initialize() {
-
         for (Food food : foodList.getListOfFood()) {
             foodListMenu.getItems().add(food.getFoodName());
+        }
+        setTableNumber();
+    }
+
+    private void setTableNumber() {
+        tableNumber.getItems().clear();
+        for (int i = 1; i <= 10; i++) {
+            if (!BookingList.isExist(i)) {
+                tableNumber.getItems().add(i + "");
+            }
         }
     }
 
@@ -74,20 +83,21 @@ public class CustomerMakeReservationController {
     @FXML
     private void doOrder(ActionEvent event) {
         OrderMaker orderMaker = null;
-        if (InputValidationController.verifyTextField(firstNameText, lastNameText, emailText, phoneNumberText, tableNumber)
-                && InputValidationController.verifyComboBox(foodListMenu) && !quantityLabel.getText().equals("0")
-                && InputValidationController.verifyIntNumber(phoneNumberText, tableNumber)) {
+        if (InputValidationController.verifyTextField(firstNameText, lastNameText, emailText, phoneNumberText)
+                && InputValidationController.verifyComboBox(foodListMenu, tableNumber) && !quantityLabel.getText().equals("0")
+                && InputValidationController.verifyIntNumber(phoneNumberText)) {
             orderMaker = new OrderMaker(
                     firstNameText.getText(),
                     lastNameText.getText(),
                     emailText.getText(),
                     phoneNumberText.getText(),
                     quantityLabel.getText(),
-                    tableNumber.getText(),
+                    tableNumber.getValue(),
                     listOfOrderedFood
             );
             orderMaker.prepareOrder();
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
+            setTableNumber();
         } else {
             InputValidationController.setErrorMessage(errorLabel, "There is Wrong Data");
         }

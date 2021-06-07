@@ -11,12 +11,10 @@ public class Invoice implements IInvoice {
 
     @Override
     public double getOverallPrice() {
-        ArrayList<Food> listOfOrderedFood = booking.getTable().getOrder().getOrderedFood();
-        double price = 0;
-        for (Food food : listOfOrderedFood) {
-            price += food.getPrice();
-        }
-        return price;
+       int quantity = booking.getTable().getOrder().getOrderQuantity();
+       String foodName = booking.getTable().getOrder().getFoodName();
+       double foodPrice = FoodList.getFoodList().getFoodByName(foodName).getPrice();
+       return quantity * foodPrice;
     }
 
     @Override

@@ -68,11 +68,7 @@
                         <Insets right="16.0" />
                     </opaqueInsets>
                 </GridPane>
-                <TextField fx:id="tableNumber" promptText="Table Number">
-                    <VBox.margin>
-                        <Insets bottom="16.0" left="64.0" right="64.0" />
-                    </VBox.margin>
-                </TextField>
+            <ComboBox fx:id="tableNumber" prefWidth="150.0" promptText="Choose Table" />
                 <Label fx:id="totalPrice" textFill="#06a800">
                     <VBox.margin>
                         <Insets bottom="16.0" />

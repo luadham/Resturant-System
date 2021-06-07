@@ -10,6 +10,7 @@ public class Order {
     private int orderId;
     private int orderQuantity;
     private ArrayList<Food> orderedFood;
+    private String foodName;
     private  boolean isDone;
     private boolean isDelivered;
 
@@ -25,6 +26,12 @@ public class Order {
         this.orderQuantity = orderQuantity;
         this.orderedFood = orderedFood;
         this.isDone = false;
+    }
+
+    public Order(int orderId, int orderQuantity, String foodName) {
+        this.orderId = orderId;
+        this.orderQuantity = orderQuantity;
+        this.foodName = foodName;
     }
 
     /**
@@ -54,7 +61,9 @@ public class Order {
         return orderedFood;
     }
 
-
+    public String getFoodName() {
+        return foodName;
+    }
 
     public void orderCompleted()
     {
