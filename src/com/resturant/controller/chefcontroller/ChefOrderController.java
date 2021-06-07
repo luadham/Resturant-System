@@ -26,16 +26,16 @@ public class ChefOrderController {
 
     @FXML
     private void initialize() {
-        int x=0;
+        int index=0;
         for (Booking booking : bookings) {
             bookings.toString();
             flowPane.getChildren().add(generateOrderCard(
                     booking.getBookId(),
                     booking.getTable().getTableNumber(),
-                    booking.getTable().getOrder().getOrderedFood().get(x).getFoodName(),
+                    booking.getTable().getOrder().getOrderedFood().get(index).getFoodName(),
                     booking.getTable().getOrder().getOrderQuantity()
             ));
-            x++;
+            //x++;
         }
     }
 

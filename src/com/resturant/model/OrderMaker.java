@@ -13,6 +13,7 @@ public class OrderMaker implements IOrderMaker {
     private int quantity;
     private static int orderId;
     private ArrayList<Food> orderdFood;
+    private ArrayList<Table> tables;
     private static int bookId;
     private Invoice invoice;
     private BookingList bookingList;
@@ -40,6 +41,14 @@ public class OrderMaker implements IOrderMaker {
         this.orderdFood = listOfOrderdFood;
     }
 
+    public OrderMaker(String firstName, String lastName, String email,
+                      String phoneNumber, String quantity, ArrayList<Table> tableNumber, ArrayList<Food> listOfOrderdFood) {
+        this.customer = new Customer(firstName,lastName, email, phoneNumber);
+        this.quantity = Integer.parseInt(quantity);
+        tables = tableNumber;
+        this.orderdFood = listOfOrderdFood;
+    }
+
     public OrderMaker(String firstName, String lastName, String email, String address,
                       String phoneNumber, String quantity, String tableNumber, ArrayList<Food> listOfOrderdFood) {
         this.customer = new Customer(firstName,lastName, email, phoneNumber, address);
@@ -47,6 +56,9 @@ public class OrderMaker implements IOrderMaker {
         this.tableNumber = Integer.parseInt(tableNumber);
         this.orderdFood = listOfOrderdFood;
     }
+
+
+
 
     @Override
     public void prepareOrder() {

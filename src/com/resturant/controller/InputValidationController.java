@@ -106,7 +106,21 @@ public class InputValidationController {
      * @param comboBoxes the combo boxes
      * @return the boolean
      */
-    public static boolean verifyComboBox(ComboBox<String> comboBoxes) {
+    /**
+     * Verify combo box boolean.
+     *
+     * @param comboBoxes the combo boxes
+     * @return the boolean
+     */
+    public static boolean verifyComboBox(ComboBox<String>... comboBoxes) {
+        for (ComboBox<String> comboBox : comboBoxes) {
+            if (comboBox.getValue().equals(""))
+                return false;
+        }
+        return true;
+    }
+
+    public static boolean verifyintComboBox(ComboBox<Integer> comboBoxes) {
         return !comboBoxes.getValue().equals("");
     }
 

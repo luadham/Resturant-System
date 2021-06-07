@@ -1,5 +1,7 @@
 package com.resturant.model;
 
+import java.util.ArrayList;
+
 /**
  * The type Table.
  * @author Adham Adel
@@ -8,6 +10,8 @@ public class Table {
     private int tableNumber;
     private boolean isOccupied;
     private Order order;
+    private final ArrayList<Integer> tablenum = new ArrayList<Integer>(10);
+
 
     /**
      * Instantiates a new Table.
@@ -20,6 +24,16 @@ public class Table {
         this.tableNumber = tableNumber;
         this.isOccupied = isOccupied;
         this.order = order;
+        tablenum.add(tableNumber);
+    }
+
+    public boolean addwhenavailable(int tablenumb){
+        if(tablenum.contains(tablenumb))
+            return false;
+        else
+        {
+            return true;
+        }
     }
 
     /**
@@ -31,6 +45,7 @@ public class Table {
         return tableNumber;
     }
 
+    public final ArrayList<Integer> gettables(){return tablenum;}
     /**
      * Is occupied boolean.
      *

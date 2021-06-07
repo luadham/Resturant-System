@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Adham Adel
  */
 public class BookingList {
-    private final ArrayList<Booking> bookingsList = new ArrayList<>();
+    private static final ArrayList<Booking> bookingsList = new ArrayList<>();
     private static BookingList bookingList;
     private BookingList() {}
 
@@ -23,12 +23,13 @@ public class BookingList {
         return bookingList;
     }
 
+
     /**
      * Gets bookings list.
      *
      * @return the bookings list
      */
-    public ArrayList<Booking> getBookingsList() {
+    public static ArrayList<Booking> getBookingsList() {
         return bookingsList;
     }
 
@@ -44,6 +45,14 @@ public class BookingList {
     private boolean isExist(Booking targetBooking) {
         for (Booking booking : bookingsList) {
             if (booking.equals(targetBooking))
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean isExist(int tableNumber) {
+        for (Booking booking : bookingsList) {
+            if (booking.getTable().getTableNumber() == tableNumber)
                 return true;
         }
         return false;
@@ -76,6 +85,8 @@ public class BookingList {
         }
         return null;
     }
+
+
 
 
     /**
