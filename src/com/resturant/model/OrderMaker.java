@@ -8,11 +8,7 @@ import java.util.ArrayList;
  * @author Adham Adel
  */
 public class OrderMaker implements IOrderMaker {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phoneNumber;
-    private String address;
+
     private int tableNumber;
     private int quantity;
     private static int orderId;
@@ -38,10 +34,10 @@ public class OrderMaker implements IOrderMaker {
      */
     public OrderMaker(String firstName, String lastName, String email,
                       String phoneNumber, String quantity, String tableNumber, ArrayList<Food> listOfOrderdFood) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.customer.setFirstName(firstName);
+        this.customer.setLastName(lastName);
+        this.customer.setEmail(email);
+        this.customer.setPhoneNumber(phoneNumber);
         this.quantity = Integer.parseInt(quantity);
         this.tableNumber = Integer.parseInt(tableNumber);
         this.orderdFood = listOfOrderdFood;
@@ -49,7 +45,6 @@ public class OrderMaker implements IOrderMaker {
     @Override
     public void prepareOrder() {
         bookingList = BookingList.getBookingList();
-        customer = new Customer(firstName, lastName, email, phoneNumber, address);
         order = new Order(orderId++, quantity, orderdFood);
         table = new Table(tableNumber, true, order);
         booking = new Booking(bookId++, customer, table);
