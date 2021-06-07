@@ -12,6 +12,14 @@ public class Customer {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+
+    }
+    public Customer(String firstName, String lastName, String email, String phoneNumber, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
     public String getFirstName() {
@@ -40,5 +48,12 @@ public class Customer {
     }
     public void setPhoneNumber (String phoneNumber){
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress (String address){
+        this.address = address;
     }
 }

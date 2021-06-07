@@ -9,10 +9,6 @@ import java.util.ArrayList;
  */
 public class OrderMaker implements IOrderMaker {
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phoneNumber;
     private int tableNumber;
     private int quantity;
     private static int orderId;
@@ -38,18 +34,23 @@ public class OrderMaker implements IOrderMaker {
      */
     public OrderMaker(String firstName, String lastName, String email,
                       String phoneNumber, String quantity, String tableNumber, ArrayList<Food> listOfOrderdFood) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.customer = new Customer(firstName,lastName, email, phoneNumber);
         this.quantity = Integer.parseInt(quantity);
         this.tableNumber = Integer.parseInt(tableNumber);
         this.orderdFood = listOfOrderdFood;
     }
+
+    public OrderMaker(String firstName, String lastName, String email, String address,
+                      String phoneNumber, String quantity, String tableNumber, ArrayList<Food> listOfOrderdFood) {
+        this.customer = new Customer(firstName,lastName, email, phoneNumber, address);
+        this.quantity = Integer.parseInt(quantity);
+        this.tableNumber = Integer.parseInt(tableNumber);
+        this.orderdFood = listOfOrderdFood;
+    }
+
     @Override
     public void prepareOrder() {
         bookingList = BookingList.getBookingList();
-        customer = new Customer(firstName, lastName, email, phoneNumber);
         order = new Order(orderId++, quantity, orderdFood);
         table = new Table(tableNumber, true, order);
         booking = new Booking(bookId++, customer, table);
