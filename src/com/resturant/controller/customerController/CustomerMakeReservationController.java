@@ -16,6 +16,10 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The type Customer make reservation controller.
+ * @author Mahmoud El Telt
+ */
 public class CustomerMakeReservationController {
     @FXML private TextField firstNameText;
     @FXML private TextField lastNameText;
