@@ -23,19 +23,19 @@ public class ChefOrderController {
     private final BookingList bookingList = BookingList.getBookingList();
     private final ArrayList<Booking> bookings = bookingList.getBookingsList();
     private static int buttonNumber;
+    private ArrayList<Pane> paneArrayList = new ArrayList<>();
 
     @FXML
     private void initialize() {
-        int index = 0;
         for (Booking booking : bookings) {
-            bookings.toString();
-            flowPane.getChildren().add(generateOrderCard(
+            Pane orderCard = generateOrderCard(
                     booking.getBookId(),
                     booking.getTable().getTableNumber(),
                     booking.getTable().getOrder().getFoodName(),
                     booking.getTable().getOrder().getOrderQuantity()
-            ));
-
+            );
+            paneArrayList.add(orderCard);
+            flowPane.getChildren().add(orderCard);
         }
     }
 
@@ -55,8 +55,7 @@ public class ChefOrderController {
         doLabelStyle(orderIdLabel, tableNumberLabel, foodNameLabel, quantityLabel);
         pane.getChildren().add(vBox);
         doneButton.setOnAction(e -> {
-            System.out.println(doneButton.getId());
-            flowPane.getChildren().remove(Integer.parseInt(doneButton.getId()));
+            flowPane.getChildren().remove(paneArrayList.get(Integer.parseInt(doneButton.getId())));
         });
         return pane;
     }

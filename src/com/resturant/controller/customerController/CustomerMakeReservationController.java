@@ -93,7 +93,7 @@ public class CustomerMakeReservationController {
                     phoneNumberText.getText(),
                     quantityLabel.getText(),
                     tableNumber.getValue(),
-                    listOfOrderedFood
+                    foodListMenu.getValue()
             );
             orderMaker.prepareOrder();
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
