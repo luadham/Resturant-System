@@ -11,46 +11,18 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 
 public class ManagerSalesController {
-
-    @FXML
-    private HBox hbox;
+    @FXML Label totalSales;
     private final BookingList bookingList = BookingList.getBookingList();
     private final ArrayList<Booking> bookings = bookingList.getBookingsList();
-    private Invoice invoice;
     private double totPrice = 0;
 
     @FXML
     private void initialize() {
         for (Booking booking : bookings) {
-            hbox = new HBox();
-            FlowPane flowPane = new FlowPane();
-            invoice = new Invoice(booking);
+            Invoice invoice = new Invoice(booking);
             totPrice += invoice.getOverallPrice();
-            flowPane.getChildren().add(generateOrderCard(
-                    booking.getBookId(),
-                    invoice.getOverallPrice()
-            ));
-            Label totPriceLabel = new Label("Total Income: $" + totPrice);
-            totPriceLabel.setAlignment(Pos.CENTER);
-            hbox.getChildren().addAll(flowPane, totPriceLabel);
+            totalSales.setText(String.valueOf(totPrice));
         }
     }
 
-    private Pane generateOrderCard(int orderId, double price) {
-        Pane pane = new Pane();
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER);
-        Label orderIdLabel = new Label("Order ID: " + String.valueOf(orderId));
-        Label priceLabel = new Label("Price: $" + price);
-        vBox.getChildren().addAll(orderIdLabel, priceLabel);
-        doLabelStyle(orderIdLabel, priceLabel);
-        pane.getChildren().add(vBox);
-        return pane;
-    }
-
-    private void doLabelStyle(Label... labels) {
-        for (Label label : labels) {
-            label.setStyle("-fx-label-padding: 4; -fx-font-size: 14");
-        }
-    }
 }
