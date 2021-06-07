@@ -3,9 +3,7 @@ package com.resturant.controller.customerController;
 import com.resturant.controller.ErrorPage;
 import com.resturant.controller.InputValidationController;
 import com.resturant.controller.factory.StageFactory;
-import com.resturant.model.Food;
-import com.resturant.model.FoodList;
-import com.resturant.model.OrderMaker;
+import com.resturant.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -70,10 +68,11 @@ public class CustomerPlaceOrderController {
 
     @FXML
     private void doOrder(ActionEvent event) {
+        OrderMaker orderMaker = null;
         if (InputValidationController.verifyTextField(firstNameText, lastNameText, emailText, phoneNumberText, address)
                 && InputValidationController.verifyComboBox(foodListMenu) && !quantityLabel.getText().equals("0")
                 && InputValidationController.verifyIntNumber(phoneNumberText)) {
-            OrderMaker orderMaker = new OrderMaker(
+            orderMaker = new OrderMaker(
                     firstNameText.getText(),
                     lastNameText.getText(),
                     emailText.getText(),
@@ -86,6 +85,12 @@ public class CustomerPlaceOrderController {
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
         } else {
             InputValidationController.setErrorMessage(errorLabel , "There is Wrong Data");
+        }
+        if (orderMaker != null) {
+            Customer customer = new Customer(firstNameText.getText(), lastNameText.getText(), emailText.getText(), phoneNumberText.getText());
+            String totalPrice = String.valueOf(orderMaker.getOrderPrice());
+            Thread sendMailService = new Thread(new STMP(customer, totalPrice));
+            sendMailService.start();
         }
     }
 

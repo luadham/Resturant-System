@@ -69,10 +69,11 @@ public class WaiterOrderController {
 
     @FXML
     private void doOrder(ActionEvent event) {
+        OrderMaker orderMaker = null;
         if (InputValidationController.verifyTextField(firstNameText, lastNameText, emailText, phoneNumberText , tableNumber)
             && InputValidationController.verifyComboBox(foodListMenu) && !quantityLabel.getText().equals("0")
             && InputValidationController.verifyIntNumber(phoneNumberText, tableNumber)) {
-            OrderMaker orderMaker = new OrderMaker(
+            orderMaker = new OrderMaker(
                     firstNameText.getText(),
                     lastNameText.getText(),
                     emailText.getText(),
@@ -85,6 +86,17 @@ public class WaiterOrderController {
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
         } else {
             InputValidationController.setErrorMessage(errorLabel , "There is Wrong Data");
+        }
+        if (orderMaker != null) {
+            Customer customer = new Customer(
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    emailText.getText(),
+                    phoneNumberText.getText()
+            );
+            String orderPrice = String.valueOf(orderMaker.getOrderPrice());
+            Thread sendMailService = new Thread(new STMP(customer, orderPrice));
+            sendMailService.start();
         }
     }
     @FXML
