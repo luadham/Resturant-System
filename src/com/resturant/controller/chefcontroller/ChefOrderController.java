@@ -21,11 +21,20 @@ public class ChefOrderController {
     @FXML private FlowPane flowPane;
     private final BookingList bookingList = BookingList.getBookingList();
     private final ArrayList<Booking> bookings = bookingList.getBookingsList();
+    private int buttonNumber;
 
     @FXML
     private void initialize() {
-        flowPane.getChildren().add(generateOrderCard(1,2,"adham",3));
+        for (Booking booking : bookings) {
+            flowPane.getChildren().add(generateOrderCard(
+                    booking.getBookId(),
+                    booking.getTable().getTableNumber(),
+                    "test",
+                    1
+            ));
+        }
     }
+
 
     private Pane generateOrderCard(int orderId, int tableNumberid, String foodName, int qunatity) {
         Pane pane = new Pane();
@@ -35,11 +44,13 @@ public class ChefOrderController {
         Label tableNumberLabel = new Label("Table Number: " + String.valueOf(tableNumberid));
         Label foodNameLabel = new Label("Order: " + foodName);
         Label quantityLabel = new Label("Quantity: " + String.valueOf(qunatity));
-        Button btn = new Button("Done");
-        btn.setStyle("-fx-background-color: #ed4d4f; -fx-text-fill: #fff; -fx-font-size: 18");
-        vBox.getChildren().addAll(orderIdLabel, tableNumberLabel, foodNameLabel, quantityLabel, btn);
+        Button doneButton = new Button("Done");
+        doneButton.setId(buttonNumber++ + "");
+        doneButton.setStyle("-fx-background-color: #ed4d4f; -fx-text-fill: #fff; -fx-font-size: 18");
+        vBox.getChildren().addAll(orderIdLabel, tableNumberLabel, foodNameLabel, quantityLabel, doneButton);
         doLabelStyle(orderIdLabel, tableNumberLabel, foodNameLabel, quantityLabel);
         pane.getChildren().add(vBox);
+        doneButton.setOnAction(e -> flowPane.getChildren().remove(Integer.parseInt(doneButton.getId())));
         return pane;
     }
     private void doLabelStyle(Label... labels) {
