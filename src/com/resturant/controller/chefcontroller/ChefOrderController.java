@@ -35,7 +35,7 @@ public class ChefOrderController {
                     booking.getTable().getOrder().getOrderedFood().get(index).getFoodName(),
                     booking.getTable().getOrder().getOrderQuantity()
             ));
-            //x++;
+
         }
     }
 

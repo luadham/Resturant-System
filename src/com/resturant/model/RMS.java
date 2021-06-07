@@ -33,6 +33,9 @@ public class RMS implements IRMS {
                 new Account("adham", "1234")
         ));
         foodList.addNewFood(new Food("Pizza" , "Delicious", 12));
-        foodList.addNewFood(new Food("Burger" , "Delicious", 13));
+        foodList.addNewFood(new Food("Chicken Burger" , "Delicious", 13));
+        foodList.addNewFood(new Food("Beef Burger" , "Delicious", 14));
+        foodList.addNewFood(new Food("Sushi" , "Delicious", 15));
+
     }
 }
