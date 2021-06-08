@@ -8,7 +8,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -77,7 +80,7 @@ public class WaiterOrderController {
     }
 
     @FXML
-    private void doOrder(ActionEvent event) {
+    private void doOrder(ActionEvent event) throws FileNotFoundException {
         OrderMaker orderMaker = null;
         if (InputValidationController.verifyTextField(firstNameText, lastNameText, emailText, phoneNumberText)
                 && InputValidationController.verifyComboBox(foodListMenu, tableNumber) && !quantityLabel.getText().equals("0")
@@ -93,8 +96,18 @@ public class WaiterOrderController {
             );
             orderMaker.prepareOrder();
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
-            tableNumber.setValue("Choose Table");
+            File file = new File("rec.txt");
+            PrintWriter printWriter = new PrintWriter(file);
+            printWriter.println(firstNameText.getText());
+            printWriter.println(lastNameText.getText());
+            printWriter.println(emailText.getText());
+            printWriter.println(phoneNumberText.getText());
+            printWriter.println(quantityLabel.getText());
+            printWriter.println(tableNumber.getValue());
+            printWriter.println(foodListMenu.getValue());
+            printWriter.close();
             setTableNumber();
+            tableNumber.setValue("Choose Table");
             InputValidationController.clearFields(firstNameText, lastNameText, phoneNumberText);
         } else {
             InputValidationController.setErrorMessage(errorLabel , "There is Wrong Data");
