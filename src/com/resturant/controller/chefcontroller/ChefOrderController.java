@@ -1,5 +1,7 @@
 package com.resturant.controller.chefcontroller;
 
+import com.resturant.controller.ErrorPage;
+import com.resturant.controller.factory.StageFactory;
 import com.resturant.model.Booking;
 import com.resturant.model.BookingList;
 import com.resturant.model.Table;
@@ -20,6 +22,7 @@ import java.util.Objects;
 
 public class ChefOrderController {
     @FXML private FlowPane flowPane;
+    @FXML private Button homePageButton;
     private final BookingList bookingList = BookingList.getBookingList();
     private final ArrayList<Booking> bookings = bookingList.getBookingsList();
     private static int buttonNumber;
@@ -39,7 +42,16 @@ public class ChefOrderController {
         }
     }
 
-
+    @FXML
+    private void goHomePage() {
+        try {
+            StageFactory stageFactory = new StageFactory(homePageButton);
+            stageFactory.getView();
+        } catch (IOException ex) {
+            ErrorPage errorPage = new ErrorPage();
+            errorPage.showErrorPage();
+        }
+    }
     private Pane generateOrderCard(int orderId, int tableNumberid, String foodName, int qunatity) {
         Pane pane = new Pane();
         VBox vBox = new VBox();

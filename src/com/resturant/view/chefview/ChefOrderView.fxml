@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.resturant.controller.chefcontroller.ChefOrderController">
    <children>
-      <FlowPane fx:id="flowPane" prefHeight="400.0" prefWidth="600.0" />
+      <Button fx:id="homePageButton" layoutX="228.0" layoutY="8.0" mnemonicParsing="false" onAction="#goHomePage" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #4aadff;" text="Home Page" textFill="#fcfcfc">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Button>
+      <FlowPane fx:id="flowPane" layoutY="52.0" prefHeight="348.0" prefWidth="600.0" />
    </children>
 </Pane>
