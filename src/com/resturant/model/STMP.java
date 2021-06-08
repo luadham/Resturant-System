@@ -11,9 +11,13 @@ import java.util.Properties;
 public class STMP implements Runnable {
     private Customer customer;
     private String orderPrice;
-    public STMP(Customer customer, String orderPrice) {
+    private String orderName;
+    private String emailMessage;
+    public STMP(Customer customer, String orderPrice, String orderName, String emailMessage) {
         this.customer = customer;
         this.orderPrice = orderPrice;
+        this.orderName = orderName;
+        this.emailMessage = emailMessage;
     }
 
     @Override
@@ -32,20 +36,14 @@ public class STMP implements Runnable {
         Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("amtresturant@gmail.com","pqnj hzfl kyns lwfn");
+                        return new PasswordAuthentication("amtresturant@gmail.com","xybd qxap qohg zqsg");
                     }
                 });
-
         try {
             MimeMessage message = new MimeMessage(session);
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(this.customer.getEmail()));
-            message.setSubject("Your AMT Resturant Order");
-            message.setContent("Hello Mr/s." + customer.getFirstName() +
-                    "I hope this mail find you well<br>"
-                    + "Your Order Has been submitted Successfully<br>"
-                    + "Order is being prepared<br>"
-                    + "Your Total Cost is: " + orderPrice + " $"
-                    + "<br> Thank you for choosing our service<br>", "text/html; charset=utf-8");
+            message.addRecipient(Message.RecipientType.TO,new InternetAddress(customer.getEmail()));
+            message.setSubject("Your AMT Restaurant Order");
+            message.setContent(emailMessage, "text/html; charset=utf-8");
             Transport.send(message);
         } catch (MessagingException e) {throw new RuntimeException(e);}
     }

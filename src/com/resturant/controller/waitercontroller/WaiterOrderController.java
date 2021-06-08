@@ -95,22 +95,11 @@ public class WaiterOrderController {
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
             tableNumber.setValue("Choose Table");
             setTableNumber();
-            InputValidationController.clearFields(firstNameText, lastNameText, emailText, phoneNumberText);
-            foodListMenu.setValue("Choose Food");
+            InputValidationController.clearFields(firstNameText, lastNameText, phoneNumberText);
         } else {
             InputValidationController.setErrorMessage(errorLabel , "There is Wrong Data");
         }
-        if (orderMaker != null) {
-            Customer customer = new Customer(
-                    firstNameText.getText(),
-                    lastNameText.getText(),
-                    emailText.getText(),
-                    phoneNumberText.getText()
-            );
-            String orderPrice = String.valueOf(orderMaker.getOrderPrice());
-            Thread sendMailService = new Thread(new STMP(customer, orderPrice));
-            sendMailService.start();
-        }
+
     }
     @FXML
     private void goHomePage(ActionEvent event) {

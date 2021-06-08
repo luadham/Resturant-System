@@ -22,33 +22,8 @@ public class OrderMaker implements IOrderMaker {
     private Table table;
     private Booking booking;
     private String foodName;
-
-    /**
-     * Instantiates a new Order maker.
-     *
-     * @param firstName        the first name
-     * @param lastName         the last name
-     * @param email            the email
-     * @param phoneNumber      the phone number
-     * @param quantity         the quantity
-     * @param tableNumber      the table number
-     * @param listOfOrderdFood the list of orderd food
-     */
-    public OrderMaker(String firstName, String lastName, String email,
-                      String phoneNumber, String quantity, String tableNumber, ArrayList<Food> listOfOrderdFood) {
-        this.customer = new Customer(firstName,lastName, email, phoneNumber);
-        this.quantity = Integer.parseInt(quantity);
-        this.tableNumber = Integer.parseInt(tableNumber);
-        this.orderdFood = listOfOrderdFood;
-    }
-
-    public OrderMaker(String firstName, String lastName, String email,
-                      String phoneNumber, String quantity, ArrayList<Table> tableNumber, ArrayList<Food> listOfOrderdFood) {
-        this.customer = new Customer(firstName,lastName, email, phoneNumber);
-        this.quantity = Integer.parseInt(quantity);
-        tables = tableNumber;
-        this.orderdFood = listOfOrderdFood;
-    }
+    private String address;
+    private boolean delevery;
 
     public OrderMaker(String firstName, String lastName, String email,
                       String phoneNumber, String quantity, String tableNumber ,String foodName) {
@@ -59,18 +34,12 @@ public class OrderMaker implements IOrderMaker {
     }
 
     public OrderMaker(String firstName, String lastName, String email, String address,
-                      String phoneNumber, String quantity, String tableNumber, ArrayList<Food> listOfOrderdFood) {
+                      String phoneNumber, String quantity, String foodName, boolean delevery) {
         this.customer = new Customer(firstName,lastName, email, phoneNumber, address);
         this.quantity = Integer.parseInt(quantity);
-        this.tableNumber = Integer.parseInt(tableNumber);
-        this.orderdFood = listOfOrderdFood;
-    }
-    public OrderMaker(String firstName, String lastName, String email, String address,
-                      String phoneNumber, String quantity, String tableNumber, String foodName) {
-        this.customer = new Customer(firstName,lastName, email, phoneNumber, address);
-        this.quantity = Integer.parseInt(quantity);
-        this.tableNumber = Integer.parseInt(tableNumber);
         this.foodName = foodName;
+        this.address = address;
+        this.delevery = delevery;
     }
 
 
@@ -84,6 +53,17 @@ public class OrderMaker implements IOrderMaker {
         booking = new Booking(bookId++, customer, table);
         bookingList.addNewBooking(booking);
         invoice = new Invoice(booking);
+        String emailMessage = "Hello Mr/s." + customer.getFirstName() + " " +
+                "I hope this mail find you well<br>"
+                + "Your Order Has been submitted Successfully<br>"
+                + "Order: " + order.getFoodName()
+                + "<br>Order is being prepared<br>"
+                + "Your Total Cost is: " + getOrderPrice() + " $"
+                + "<br> Thank you for choosing our service<br>";
+        if (delevery)
+            emailMessage += "Your Order Will be delivered to : " + this.address + "<br>";
+        Thread sendMailService = new Thread(new STMP(customer, String.valueOf(getOrderPrice()), order.getFoodName(), emailMessage));
+        sendMailService.start();
     }
 
     @Override

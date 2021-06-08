@@ -80,23 +80,17 @@ public class CustomerPlaceOrderController {
                     firstNameText.getText(),
                     lastNameText.getText(),
                     emailText.getText(),
+                    address.getText(),
                     phoneNumberText.getText(),
                     quantityLabel.getText(),
-                    address.getText(),
-                    foodListMenu.getValue()
+                    foodListMenu.getValue(),
+                    true
             );
             orderMaker.prepareOrder();
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
-            InputValidationController.clearFields(firstNameText, lastNameText, emailText, phoneNumberText);
-            foodListMenu.setValue("Choose Food");
+            InputValidationController.clearFields(firstNameText, lastNameText, phoneNumberText);
         } else {
             InputValidationController.setErrorMessage(errorLabel , "There is Wrong Data");
-        }
-        if (orderMaker != null) {
-            Customer customer = new Customer(firstNameText.getText(), lastNameText.getText(), emailText.getText(), phoneNumberText.getText());
-            String totalPrice = String.valueOf(orderMaker.getOrderPrice());
-            Thread sendMailService = new Thread(new STMP(customer, totalPrice));
-            sendMailService.start();
         }
     }
 
