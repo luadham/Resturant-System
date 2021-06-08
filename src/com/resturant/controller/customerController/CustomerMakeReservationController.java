@@ -98,6 +98,8 @@ public class CustomerMakeReservationController {
             orderMaker.prepareOrder();
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
             setTableNumber();
+            InputValidationController.clearFields(firstNameText, lastNameText, emailText, phoneNumberText);
+            foodListMenu.setValue("Choose Food");
         } else {
             InputValidationController.setErrorMessage(errorLabel, "There is Wrong Data");
         }

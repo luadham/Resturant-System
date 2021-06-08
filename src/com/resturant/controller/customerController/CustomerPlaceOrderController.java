@@ -83,10 +83,12 @@ public class CustomerPlaceOrderController {
                     phoneNumberText.getText(),
                     quantityLabel.getText(),
                     address.getText(),
-                    listOfOrderedFood
+                    foodListMenu.getValue()
             );
             orderMaker.prepareOrder();
             totalPrice.setText(String.valueOf(orderMaker.getOrderPrice()) + " $");
+            InputValidationController.clearFields(firstNameText, lastNameText, emailText, phoneNumberText);
+            foodListMenu.setValue("Choose Food");
         } else {
             InputValidationController.setErrorMessage(errorLabel , "There is Wrong Data");
         }
